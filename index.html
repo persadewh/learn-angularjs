@@ -1,0 +1,16 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="https://code.angularjs.org/1.7.4/angular.js"></script>
+    
+    </head>
+    <body>
+        
+        <div ng-init="qty=1;cost=2">
+            <div><input type="number" ng-model="qty" required/></div>
+            <div><input type="number" ng-model="cost" required/></div>
+            <div>{{qty * cost}}</div>
+        </div>
+
+    </body>
+</html>
