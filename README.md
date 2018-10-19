@@ -1,1 +1,1 @@
-# learn-angularjs
+# AngularJS
