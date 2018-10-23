@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="angular.min.js"></script>
+    
+    </head>
+    <body>
+        
+        <div ng-controller="myController">
+            <button ng-click="add(1)" class="button">Add</button>
+            <button ng-click="sub(1)" class="button">Sub</button>
+            <div>
+                Count : {{counter}}
+            </div>
+        </div>
+
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myController', function($scope){
+                $scope.counter = 0;
+                $scope.add = function(num){
+                    $scope.counter = $scope.counter + num;
+                };
+                $scope.sub = function(num){
+                    $scope.counter = $scope.counter - num;
+                };
+            });
+        </script>
+
+    </body>
+</html>

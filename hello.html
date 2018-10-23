@@ -1,0 +1,20 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="angular.min.js"></script>
+        <script src="mycontroller.js"></script>
+    </head>
+    <body>
+        
+        <div ng-controller="HelloController">
+            <input ng-model="greeting.text" />
+            <p>{{greeting.text}}, World</p>
+        </div>
+
+        <div>
+            <input ng-model="name" type="text" placeholder="Your name" />
+            <h1>{{name}}</h1>
+        </div>
+
+    </body>
+</html>

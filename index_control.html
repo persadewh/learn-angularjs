@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="angular.min.js"></script>
+        
+    </head>
+    <body ng-app = "myApp">
+        
+        <div ng-controller="myController">
+            <div><input type="number" ng-model="qty" required/></div>
+            <div>
+                <input type="number" ng-model="cost" required/>
+                <select ng-model="inCurr" ng-options="c for c in currencies">
+                    <!-- <option ng-repeat="c in currencies">
+                        {{c}}
+                    </option> -->
+                </select>
+            </div>
+
+            <div>
+                <span ng-repeat="c in currencies">
+                    <!-- {{total(c)}} -->
+                    {{c}}
+                </span>
+                
+            </div>
+            <div>
+                <button class="btn" ng-click="pay()">支付</button>
+            </div>
+        </div>
+
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myController', function($scope){
+                $scope.qty = 1;
+                $scope.cost = 2;
+                $scope.inCurr = 'EUR';
+                $scope.currencies = ['USD', 'EUR', 'CNY'];
+                $scope.usdToForeignRates = {
+                    USD : 1,
+                    EUR : 0.74,
+                    CNY : 6.09
+                };
+
+                $scope.total = function(outCurr){
+                    window.alert(outCurr);
+                    return $scope.qty * $scope.cost;
+                };
+                
+                $scope.convertCurrency = function convertCurrency(amount, inCurr, outCurr) {
+                    return $scope.qty * $scope.cost * usdToForeignRates[outCurr] * 1 / usdToForeignRates[inCurr];
+                };
+
+                $scope.pay = function(){
+                    window.alert('Thank you');
+                };
+            });
+        </script>
+
+    </body>
+</html>
