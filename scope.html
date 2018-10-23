@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="angular.min.js"></script>
+    
+    </head>
+    <body>
+        
+        <div ng-controller="parentController">
+            <div ng-controller="childController">
+                {{person}}
+                {{person.name}}
+            </div>
+        </div>
+
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('parentController', function($scope){
+                $scope.person = { greeted: false};
+            });
+
+            app.controller('childController', function($scope){
+                $scope.person.name = 'Ray Wei';
+            });
+            
+        </script>
+
+    </body>
+</html>
