@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="../angular.min.js"></script>
+    
+    </head>
+    <body>
+        <!--
+            novalidate          Blocking the validation
+            <form name="form" novalidate>
+
+            required
+            ng-minlength
+            ng-maxlength
+        -->
+        <div>
+            <form name="form1" novalidate>
+                <input type="text" name="text1" ng-model="text1" ng-maxlength="5" maxlength="5"/>
+                
+                <div class="error" ng-show="form1.text1.$dirty && form1.text1.$invalid">
+                    <small class="error" ng-show="form1.text1.$error.maxlength">wwww</small>
+                </div>
+                
+            </form>
+            
+        </div>
+        
+        
+        <!-- <script>
+            var app = angular.module('myApp', []);
+            app.controller('myController', function($scope){
+                
+            });
+        </script> -->
+
+    </body>
+</html>
