@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="../angular.min.js"></script>
+    
+    </head>
+    <body>
+        <!--
+            1.text
+            2.mustHaveExpression
+            3.trustedContext
+
+            If we type {{to}} into textarea, it will change it by the input value
+        -->
+        <div ng-controller="myController">
+            <input ng-model="to" type="email" placeholder="Recipient" />
+            <textarea ng-model="emailBody" style="width: 300px; height: 300px;"></textarea>
+            <pre>__ previewText __</pre>
+        </div>
+
+        <script>
+            //create a new module
+            angular.module('emailParser', [])
+            .config(['$interpolateProvider', function($interpolateProvider){
+                $interpolateProvider.startSymbol('__');
+                $interpolateProvider.endSymbol('__');
+            }])
+            .factory('EmailParser', ['$interpolate', function($interpolate){
+                //service
+                return {
+                    parse: function(text, context){
+                        var template = $interpolate(text);
+                        return template(context);
+                    }
+                }
+            }]);
+
+            var app = angular.module('myApp', ['emailParser']);
+            app.controller('myController', ['$scope', 'EmailParser', function($scope, EmailParser){
+                //add listener
+                $scope.$watch('emailBody', function(body){
+                    if(body){
+                        $scope.previewText = EmailParser.parse(body, {to:$scope.to});//s represent to label, and the value after colon is the new value
+                    }
+                });
+            }]);
+        </script>
+
+    </body>
+</html>
