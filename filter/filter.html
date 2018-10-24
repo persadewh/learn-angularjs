@@ -1,0 +1,55 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="../angular.min.js"></script>
+    
+    </head>
+    <body>
+        <!--
+            format the data style for user
+        -->
+
+        <div ng-controller="myController">
+            {{ name | uppercase}}<br>
+            {{ name1 }}<br>
+            {{ today | date:'medium' }}<br>
+        </div>
+        
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myController', ['$scope', '$filter', function($scope, $filter){
+                $scope.name = 'Ray Wei';
+
+                $scope.name1 = $filter('lowercase')($scope.name);
+
+                $scope.today = new Date();
+            }]);
+        </script>
+
+        <!--
+            inner filter:
+            1.currency                      number to currency
+            2.date                          default: mediumDate
+            {{ today | date:'medium' }}     Aug 09, 2013 12:09:02 PM 
+            {{ today | date:'short' }}      8/9/1312:09PM
+            {{ today | date:'fullDate' }}   Thursday, August 09, 2013
+            {{ today | date:'longDate' }}   August 09, 2013 
+            {{ today | date:'mediumDate' }} Aug 09, 2013 
+            {{ today | date:'shortDate' }}  8/9/13 
+            {{ today | date:'mediumTime' }} 12:09:02 PM
+            {{ today | date:'shortTime' }}  12:09 PM
+            {{ today | date:'MMMd, y' }}    Aug9, 2013
+            {{ today | date:'EEEE, d, M' }} Thursday, 9, 8
+            {{ today | date:'hh:mm:ss.sss' }}12:09:02.995
+            3.filter
+            4.json
+            5.limitTo
+            6.lowercase
+            7.number
+            8.orderBy
+            9.uppercase
+            
+        -->
+
+    </body>
+</html>

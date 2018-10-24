@@ -1,0 +1,36 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="../angular.min.js"></script>
+    
+    </head>
+    <body>
+
+        <!-- <div ng-controller="myController">
+            {{ 'this is a test filter' | lowercase | cap}}
+        </div> -->
+
+        <div>
+            {{ 'this is a test filter' | lowercase | cap}}
+        </div>
+        
+        <script>
+            var app = angular.module('myApp', []);
+            app.filter('cap', function(){
+                return function(input){
+                    if(input){
+                        return input[0].toUpperCase() + input.slice(1);
+                    }
+                }
+            });
+
+            //$filter should be set, if remove the following line, we will see another view
+            // app.controller('myController', ['$scope', '$filter', function($scope, $filter){
+                
+            // }]);
+
+            
+        </script>
+
+    </body>
+</html>
