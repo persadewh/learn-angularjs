@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="../angular.min.js"></script>
+    
+    </head>
+    <body>
+        
+        <div ng-controller="myController">
+            <input ng-model="expr" type="text" placeholder="Enter an expression" />
+            <h2>{{parseValue}}</h2>
+        </div>
+
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myController', function($scope, $parse){
+                $scope.$watch('expr', function(newVal, oldVal, context){
+                    if(newVal !== oldVal){
+                        var parseFun = $parse(newVal);
+                        $scope.parseValue = parseFun(context);
+                    }
+                });
+
+                // var context = {
+                //     name: 'dreamapple'
+                // };
+                // var expression = "'Hello' + name";
+                // var parseFun = $parse(expression);
+                // $scope.parseValue = parseFun(context);
+            });
+        </script>
+
+    </body>
+</html>

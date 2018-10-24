@@ -13,3 +13,5 @@
 ### $scope
 
 ### $timeout
+
+### $parse
