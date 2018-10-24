@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="../angular.min.js"></script>
+    
+    </head>
+    <body>
+        <!--
+            E       element
+            A       attribute
+            C       class
+            M       comment
+        -->
+        <my-directive></my-directive>
+        <div my-directive></div>
+        <script>
+            var app = angular.module('myApp', []);
+            app.directive('myDirective', function(){
+                return {
+                    restrict: 'ACE',
+                    replace: true,
+                    template: '<a href="http://www.baidu.com">Click me</a>'
+                }
+            });
+        </script>
+
+    </body>
+</html>
