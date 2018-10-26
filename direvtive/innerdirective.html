@@ -11,7 +11,7 @@
             ng-src
             ng-disabled     true or false
             ng-checked
-            ng-readonly
+            ng-readonly     true or false
             ng-selected
             ng-class
             ng-style
@@ -19,11 +19,23 @@
 
         <button ng-disabled="true">Unable</button><br>
         <button ng-disabled="isDisabled">Unable</button>
-        
+
+        <input type="text" ng-readonly="true" ng-model="testReadOnly"/>
+        <br>
+        <input type="checkbox" ng-checked="true"/>
+        <input type="checkbox" ng-checked="false"/>
+
+        <input type="checkbox" ng-model="isSelected"/>
+        <select>
+            <option>One</option>
+            <option ng-selected = "isSelected">Two</option>
+        </select>
+
         <script>
             var app = angular.module('myApp', []);
             app.run(function($rootScope, $timeout){
                 $rootScope.isDisabled = false;
+                $rootScope.testReadOnly = 'This is read only';
                 var update = function(){
                     if($rootScope.isDisabled == true)
                         $rootScope.isDisabled = false;
