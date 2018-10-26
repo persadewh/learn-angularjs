@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="../angular.min.js"></script>
+    
+    </head>
+    <body>
+        
+        <!--
+            ng-href
+            ng-src
+            ng-disabled     true or false
+            ng-checked
+            ng-readonly
+            ng-selected
+            ng-class
+            ng-style
+        -->
+
+        <button ng-disabled="true">Unable</button><br>
+        <button ng-disabled="isDisabled">Unable</button>
+        
+        <script>
+            var app = angular.module('myApp', []);
+            app.run(function($rootScope, $timeout){
+                $rootScope.isDisabled = false;
+                var update = function(){
+                    if($rootScope.isDisabled == true)
+                        $rootScope.isDisabled = false;
+                    else
+                        $rootScope.isDisabled = true;
+                }
+                setInterval(function(){
+                    $rootScope.$apply(update);
+                }, 1000);
+            });
+        </script>
+
+    </body>
+</html>
